@@ -17,7 +17,7 @@ export default function EmployeeList() {
           {employees.map((employee) => (
             <div key={employee.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="h-24 bg-black flex items-center justify-center p-4">
-                <img src="/cmacbanner.png" alt="CMAC Roofing" className="h-full object-contain" />
+                <img src={employee.imageUrl} alt={employee.name} className="h-full object-contain" />
               </div>
               <div className="p-6">
                 <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-gray-200">
