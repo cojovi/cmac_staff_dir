@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { employees } from '../data';
 import { QRCodeSVG } from 'qrcode.react';
-import { UserPlus, Phone, Mail } from 'lucide-react';
+import { UserPlus, Phone, Mail, ExternalLink } from 'lucide-react';
 import { downloadVCard } from '../utils/vcard';
 
 export default function EmployeeList() {
@@ -43,14 +43,23 @@ export default function EmployeeList() {
                     level="L"
                     includeMargin={true}
                   />
-                  <button
-                    onClick={() => downloadVCard(employee)}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
-                    title="Add to Contacts"
-                  >
-                    <UserPlus size={20} />
-                    <span>Save Contact</span>
-                  </button>
+                  <div className="w-full flex flex-col gap-2">
+                    <button
+                      onClick={() => downloadVCard(employee)}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                      title="Add to Contacts"
+                    >
+                      <UserPlus size={20} />
+                      <span>Save Contact</span>
+                    </button>
+                    <Link
+                      to={`/employee/${employee.id}`}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+                    >
+                      <ExternalLink size={20} />
+                      <span>View Profile</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
