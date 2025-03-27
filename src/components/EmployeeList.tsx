@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { employees } from '../data';
 import { QRCodeSVG } from 'qrcode.react';
+import { UserPlus } from 'lucide-react';
+import { downloadVCard } from '../utils/vcard';
 
 export default function EmployeeList() {
   const baseUrl = window.location.origin;
@@ -20,33 +22,34 @@ export default function EmployeeList() {
                 <img src={employee.imageUrl} alt={employee.name} className="h-full object-contain" />
               </div>
               <div className="p-6">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-gray-200">
-                  <img
-                    src="/favicon.png"
-                    alt={employee.name}
-                    className="w-full h-full object-cover"
-                  />
+                <h3 className="text-xl font-semibold text-gray-900">{employee.name}</h3>
+                {employee.position && (
+                  <p className="text-sm text-gray-600 mt-1">{employee.position}</p>
+                )}
+                <div className="mt-4 space-y-2">
+                  <a href={`tel:${employee.phone}`} className="text-blue-600 hover:text-blue-800 block">
+                    {employee.phone}
+                  </a>
+                  <a href={`mailto:${employee.email}`} className="text-blue-600 hover:text-blue-800 block">
+                    {employee.email}
+                  </a>
                 </div>
-                <h2 className="text-xl font-semibold text-center text-gray-900 mb-2">
-                  {employee.name}
-                </h2>
-                <p className="text-gray-600 text-center mb-4">{employee.email}</p>
-                
-                <div className="flex justify-center mb-6">
+                <div className="mt-6 flex items-center justify-between">
                   <QRCodeSVG
                     value={`${baseUrl}/employee/${employee.id}`}
-                    size={128}
-                    level="H"
+                    size={100}
+                    level="L"
                     includeMargin={true}
                   />
+                  <button
+                    onClick={() => downloadVCard(employee)}
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                    title="Add to Contacts"
+                  >
+                    <UserPlus size={20} />
+                    <span>Save Contact</span>
+                  </button>
                 </div>
-                
-                <Link
-                  to={`/employee/${employee.id}`}
-                  className="block w-full text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
-                >
-                  View Profile
-                </Link>
               </div>
             </div>
           ))}
