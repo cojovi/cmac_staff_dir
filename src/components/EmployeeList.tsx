@@ -23,7 +23,7 @@ export default function EmployeeList() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900">{employee.name}</h3>
-                {employee.position && (
+                {employee.position && employee.position !== 'emply' && (
                   <p className="text-sm text-gray-600 mt-1">{employee.position}</p>
                 )}
                 <div className="mt-4 space-y-2">

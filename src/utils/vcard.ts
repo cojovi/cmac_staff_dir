@@ -12,7 +12,7 @@ export const generateVCard = (employee: Employee): string => {
     `FN:${employee.name}`,
     `N:${lastName};${firstName};;;`,
     'ORG:CMAC Roofing',
-    `TITLE:${employee.position || ''}`,
+    `TITLE:${employee.position !== 'emply' ? employee.position || '' : ''}`,
     `EMAIL;type=WORK;type=pref:${employee.email}`,
     `TEL;type=CELL;type=VOICE;type=pref:${employee.phone}`,
     'URL;type=WORK:https://www.cmacroofing.com',
