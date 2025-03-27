@@ -752,6 +752,22 @@ export const employees: Employee[] = [
     phone: '',
     imageUrl: '/favicon.png',
     position: 'emply'
+  },
+  {
+    id: 'josh-lawrence',
+    name: 'Josh Lawrence',
+    email: 'joshl@cmacroofing.com',
+    phone: '580.439.4668',
+    imageUrl: '/favicon.png',
+    position: 'emply'
+  },
+  {
+    id: 'scott-reichardt',
+    name: 'Scott Reichardt',
+    email: 'scottr@cmacroofing.com',
+    phone: '580.483.6781',
+    imageUrl: '/favicon.png',
+    position: 'emply'
   }
 ];
 
