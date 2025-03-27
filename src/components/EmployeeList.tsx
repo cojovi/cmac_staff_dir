@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { employees } from '../data';
 import { QRCodeSVG } from 'qrcode.react';
-import { UserPlus } from 'lucide-react';
+import { UserPlus, Phone, Mail } from 'lucide-react';
 import { downloadVCard } from '../utils/vcard';
 
 export default function EmployeeList() {
@@ -27,23 +27,25 @@ export default function EmployeeList() {
                   <p className="text-sm text-gray-600 mt-1">{employee.position}</p>
                 )}
                 <div className="mt-4 space-y-2">
-                  <a href={`tel:${employee.phone}`} className="text-blue-600 hover:text-blue-800 block">
+                  <a href={`tel:${employee.phone}`} className="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                    <Phone size={16} />
                     {employee.phone}
                   </a>
-                  <a href={`mailto:${employee.email}`} className="text-blue-600 hover:text-blue-800 block">
+                  <a href={`mailto:${employee.email}`} className="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                    <Mail size={16} />
                     {employee.email}
                   </a>
                 </div>
-                <div className="mt-6 flex items-center justify-between">
+                <div className="mt-6 flex flex-col items-center gap-4">
                   <QRCodeSVG
                     value={`${baseUrl}/employee/${employee.id}`}
-                    size={100}
+                    size={120}
                     level="L"
                     includeMargin={true}
                   />
                   <button
                     onClick={() => downloadVCard(employee)}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
                     title="Add to Contacts"
                   >
                     <UserPlus size={20} />
